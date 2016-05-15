@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "WikiBrain Tracker",
+  "version": "0.1",
+  "content_scripts": [{
+    "run_at": "document_end",
+    "matches": [
+      "*://*.wikipedia.org/*"
+    ],
+    "js": ["axios.js", "content.js"]
+  }],
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
+  "icons": {
+    "32": "icon_32.png",
+    "64": "icon_64.png",
+    "128": "icon_128.png"
+  }
+}
