@@ -48,7 +48,6 @@ function getCredentials(){
 }
 
 function sendPayload(payload){
-    console.log('Sending payload');
     return getCredentials()
             .then(function(creds){
                 return axios.post(creds.endpoint, payload, {headers: {'Content-Type': 'application/json', 'X-Authorization-Token': creds.apiKey}})
@@ -56,7 +55,6 @@ function sendPayload(payload){
 }
 
 function sendQueue(){
-    console.log('Sending Queue');
     var queueCache;
 
     return fetchQueue()
@@ -70,7 +68,6 @@ function sendQueue(){
                 return Promise.all(queueCache.map((q)=>{
                    return sendPayload(q)
                         .catch(function(err){
-                            console.error(err);
                             addItemToQueue(q);
                             return err;
                         });
